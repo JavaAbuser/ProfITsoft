@@ -13,8 +13,7 @@ import java.util.Map;
 public class SecondSolutionTest {
     private static SecondSolution solution;
 
-    private static final List<String> actual = new ArrayList<>() {
-    };
+    private static final List<String> actual = new ArrayList<>();
     private static final Map<String, Integer> expected = new LinkedHashMap<>();
 
     @BeforeAll

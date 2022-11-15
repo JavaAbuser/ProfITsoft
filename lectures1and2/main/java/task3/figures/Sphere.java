@@ -7,7 +7,11 @@ public class Sphere implements Shape {
     }
 
     public Sphere(double radius) {
-        this.radius = radius;
+        if (radius > 0) {
+            this.radius = radius;
+        } else {
+            System.out.println("Radius must be more than 0.");
+        }
     }
 
     public double getRadius() {
@@ -15,7 +19,11 @@ public class Sphere implements Shape {
     }
 
     public void setRadius(double radius) {
-        this.radius = radius;
+        if (radius > 0) {
+            this.radius = radius;
+        } else {
+            System.out.println("Radius must be more than 0.");
+        }
     }
 
     @Override

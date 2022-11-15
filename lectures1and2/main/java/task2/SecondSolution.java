@@ -11,17 +11,16 @@ public class SecondSolution {
     public Map<String, Integer> getTopFiveHashTags(List<String> list) {
         Map<String, Integer> resultMap = new HashMap<>();
         for (String line : list) {
-            boolean wasMentioned = false;
             String[] words = line.split("\\s+");
+            words = Arrays.stream(words)
+                    .distinct()
+                    .toArray(String[]::new);
             for (String word : words) {
                 if (word.startsWith("#")) {
                     if (!resultMap.containsKey(word)) {
                         resultMap.put(word, 1);
-                        wasMentioned = true;
                     } else {
-                        if (!wasMentioned) {
-                            resultMap.put(word, resultMap.get(word) + 1);
-                        }
+                        resultMap.put(word, resultMap.get(word) + 1);
                     }
                 }
             }

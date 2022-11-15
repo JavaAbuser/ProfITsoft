@@ -8,8 +8,12 @@ public class Cylinder implements Shape {
     }
 
     public Cylinder(double radius, double height) {
-        this.radius = radius;
-        this.height = height;
+        if (radius > 0 & height > 0) {
+            this.radius = radius;
+            this.height = height;
+        } else {
+            System.out.println("Radius and height must be more than 0.");
+        }
     }
 
     public double getRadius() {
@@ -17,7 +21,11 @@ public class Cylinder implements Shape {
     }
 
     public void setRadius(double radius) {
-        this.radius = radius;
+        if (radius > 0) {
+            this.radius = radius;
+        } else {
+            System.out.println("Radius must be more than 0.");
+        }
     }
 
     public double getHeight() {
@@ -25,7 +33,11 @@ public class Cylinder implements Shape {
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        if (height > 0) {
+            this.height = height;
+        } else {
+            System.out.println("Height must be more than 0.");
+        }
     }
 
     @Override

@@ -7,7 +7,11 @@ public class Cube implements Shape {
     }
 
     public Cube(double side) {
-        this.side = side;
+        if (side > 0) {
+            this.side = side;
+        } else {
+            System.out.println("Side must be more than 0.");
+        }
     }
 
     public double getSide() {
@@ -15,7 +19,11 @@ public class Cube implements Shape {
     }
 
     public void setSide(double side) {
-        this.side = side;
+        if (side > 0) {
+            this.side = side;
+        } else {
+            System.out.println("Side must be more than 0.");
+        }
     }
 
     @Override

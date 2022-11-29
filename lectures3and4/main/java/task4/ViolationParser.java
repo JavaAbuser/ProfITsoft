@@ -79,7 +79,7 @@ public class ViolationParser {
         }
     }
 
-    public void saveToMap(String type, double fineAmount) {
+    private void saveToMap(String type, double fineAmount) {
         if (map.containsKey(type)) {
             map.put(type, map.get(type) + fineAmount);
         } else {
@@ -87,7 +87,7 @@ public class ViolationParser {
         }
     }
 
-    public Map<String, Double> sortMapDesc(Map<String, Double> map) {
+    private Map<String, Double> sortMapDesc(Map<String, Double> map) {
         Map<String, Double> result = map.entrySet()
                 .stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
@@ -99,7 +99,7 @@ public class ViolationParser {
         return result;
     }
 
-    public void createOutput(Map<String, Double> map) {
+    private void createOutput(Map<String, Double> map) {
         map = sortMapDesc(map);
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

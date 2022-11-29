@@ -1,0 +1,67 @@
+{
+  "violations": [
+    {
+      "date_time": "2018-08-12 10:34:57",
+      "first_name": "Mike",
+      "last_name": "Happy",
+      "type": "SPEEDING",
+      "fine_amount": 340.00
+    },
+    {
+      "date_time": "2018-05-16 20:13:50",
+      "first_name": "Johny",
+      "last_name": "Crash",
+      "type": "ALCOHOLIC_STATE",
+      "fine_amount": 950.00
+    },
+    {
+      "date_time": "2018-02-24 21:03:09",
+      "first_name": "Tommy",
+      "last_name": "Kali",
+      "type": "SPEEDING",
+      "fine_amount": 500.00
+    },
+    {
+      "date_time": "2018-04-06 09:30:25",
+      "first_name": "Jenny",
+      "last_name": "Dumb",
+      "type": "NARCOTIC_STATE",
+      "fine_amount": 1500.00
+    },
+    {
+      "date_time": "2018-11-19 15:01:37",
+      "first_name": "Rachel",
+      "last_name": "Flower",
+      "type": "SPEEDING",
+      "fine_amount": 340.00
+    },
+    {
+      "date_time": "2018-10-03 23:44:51",
+      "first_name": "Tom",
+      "last_name": "Ghost",
+      "type": "NARCOTIC_STATE",
+      "fine_amount": 1500.00
+    },
+    {
+      "date_time": "2018-10-03 17:30:35",
+      "first_name": "Jeremy",
+      "last_name": "Holly",
+      "type": "ALCOHOLIC_STATE",
+      "fine_amount": 950.00
+    },
+    {
+      "date_time": "2018-07-21 23:10:03",
+      "first_name": "Nick",
+      "last_name": "Heineken",
+      "type": "NARCOTIC_STATE",
+      "fine_amount": 1500.00
+    },
+    {
+      "date_time": "2018-01-03 09:13:29",
+      "first_name": "George",
+      "last_name": "Glock",
+      "type": "SPEEDING",
+      "fine_amount": 340.00
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "violations": [
+    {
+      "date_time": "2020-05-04 16:54:07",
+      "first_name": "Tom",
+      "last_name": "Tower",
+      "type": "SPEEDING",
+      "fine_amount": 340.00
+    },
+    {
+      "date_time": "2020-04-06 09:34:51",
+      "first_name": "Mark",
+      "last_name": "Caye",
+      "type": "NARCOTIC_STATE",
+      "fine_amount": 1500.00
+    },
+    {
+      "date_time": "2020-04-04 16:46:20",
+      "first_name": "Fain",
+      "last_name": "Trac",
+      "type": "SPEEDING",
+      "fine_amount": 340.00
+    },
+    {
+      "date_time": "2020-01-12 08:12:38",
+      "first_name": "Nick",
+      "last_name": "Heineken",
+      "type": "SPEEDING",
+      "fine_amount": 650.00
+    },
+    {
+      "date_time": "2020-01-03 09:13:29",
+      "first_name": "George",
+      "last_name": "Glock",
+      "type": "SPEEDING",
+      "fine_amount": 340.00
+    },
+    {
+      "date_time": "2020-10-03 23:44:51",
+      "first_name": "Tom",
+      "last_name": "Ghost",
+      "type": "ALCOHOLIC_STATE",
+      "fine_amount": 950.00
+    },
+    {
+      "date_time": "2020-11-13 21:44:51",
+      "first_name": "Tom",
+      "last_name": "Ghost",
+      "type": "NARCOTIC_STATE",
+      "fine_amount": 2000.00
+    },
+    {
+      "date_time": "2020-10-03 23:44:51",
+      "first_name": "Tom",
+      "last_name": "Ghost",
+      "type": "ALCOHOLIC_STATE",
+      "fine_amount": 950.00
+    },
+    {
+      "date_time": "2020-10-03 23:44:51",
+      "first_name": "Tom",
+      "last_name": "Ghost",
+      "type": "SPEEDING",
+      "fine_amount": 500.00
+    }
+  ]
+}

@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 public class XmlParser {
     public static void parseXml(String inputFileName) {
-        final Pattern namePattern = Pattern.compile("(name\\s*=\\s*)\"([А-Яа-яіІЇїєЄ]+)\""); // regexp for string: name="Тарас"
-        final Pattern surnamePattern = Pattern.compile("surname\\s*=\\s*\"([А-Яа-яіІЇїєЄ]+)\""); // regexp for string: surname="Шевченко"
+        final Pattern namePattern = Pattern.compile("(name\\s*=\\s*)\"([А-Яа-яіІЇїєЄʼ]+)\""); // regexp for string: name="Тарас"
+        final Pattern surnamePattern = Pattern.compile("surname\\s*=\\s*\"([А-Яа-яіІЇїєЄʼ-]+)\""); // regexp for string: surname="Шевченко"
         final String outputFileName = "output.xml";
 
         StringBuilder builder = new StringBuilder();

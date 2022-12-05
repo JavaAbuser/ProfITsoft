@@ -56,10 +56,11 @@ public class ViolationParser {
         StringBuilder lineBuilder = new StringBuilder();
         for (File file : files) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    if (!line.endsWith("},") && !line.endsWith("}")) {
-                        lineBuilder.append(line);
+                int valueOfSymbol;
+                while ((valueOfSymbol = reader.read()) != -1) {
+                    char character = (char) valueOfSymbol;
+                    if (character != '}') {
+                        lineBuilder.append(character);
                     } else {
                         Matcher typeMatcher = typePattern.matcher(lineBuilder);
                         Matcher fineAmountMatcher = fineAmountPattern.matcher(lineBuilder);

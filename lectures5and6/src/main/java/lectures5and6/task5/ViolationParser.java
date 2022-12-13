@@ -98,7 +98,7 @@ public class ViolationParser {
                         double fineAmount = Double.parseDouble(fineAmountMatcher.group(1));
                         lineBuilder.setLength(0);
 
-                        saveToMap(type, fineAmount);
+                        saveToMap(type, fineAmount, map);
                     }
                 }
             }

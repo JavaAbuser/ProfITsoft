@@ -17,18 +17,27 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
+import java.util.Collections;
+import java.util.LinkedHashMap;
 public class ViolationParser {
     private final List<File> files = new ArrayList<>();
     private final Map<String, Double> map = new HashMap<>();
 
+    private final Lock mapLock = new ReentrantLock();
     final Pattern typePattern = Pattern.compile("\"type\"\\s*:\\s*\"(\\w+)\"");
     final Pattern fineAmountPattern = Pattern.compile("\"fine_amount\"\\s*\\s*:\\s*([\\d]*.[\\d]*)");
 
@@ -56,8 +65,8 @@ public class ViolationParser {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         long start = System.currentTimeMillis();
-        for(File file : files){
-                CompletableFuture.runAsync(() -> {
+        for (File file : files) {
+            CompletableFuture.runAsync(() -> {
                 System.out.println(Thread.currentThread().getName());
                 readAndMatch(file);
             }, executorService);
@@ -69,7 +78,7 @@ public class ViolationParser {
         long end = System.currentTimeMillis();
         System.out.println(end - start);
     }
-    
+
     public void saveToMap(String type, double fineAmount, Map<String, Double> map) {
         mapLock.lock();
         try {
@@ -83,7 +92,7 @@ public class ViolationParser {
         }
     }
 
-    public void readAndMatch(File file){
+    public void readAndMatch(File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             int valueOfSymbol;
             while ((valueOfSymbol = reader.read()) != -1) {

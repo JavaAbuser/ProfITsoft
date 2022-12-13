@@ -69,12 +69,17 @@ public class ViolationParser {
         long end = System.currentTimeMillis();
         System.out.println(end - start);
     }
-
-    public void saveToMap(String type, double fineAmount) {
-        if (map.containsKey(type)) {
-            map.put(type, map.get(type) + fineAmount);
-        } else {
-            map.put(type, fineAmount);
+    
+    public void saveToMap(String type, double fineAmount, Map<String, Double> map) {
+        mapLock.lock();
+        try {
+            if (map.containsKey(type)) {
+                map.put(type, map.get(type) + fineAmount);
+            } else {
+                map.put(type, fineAmount);
+            }
+        } finally {
+            mapLock.unlock();
         }
     }
 

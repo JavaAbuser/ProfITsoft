@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 public class ViolationParser {
     private final List<File> files = new ArrayList<>();
-    private final Map<String, Double> map = new HashMap<>();
+    private final Map<String, Double> map = new ConcurrentHashMap<>();
 
     final Pattern typePattern = Pattern.compile("\"type\"\\s*:\\s*\"(\\w+)\"");
     final Pattern fineAmountPattern = Pattern.compile("\"fine_amount\"\\s*\\s*:\\s*([\\d]*.[\\d]*)");

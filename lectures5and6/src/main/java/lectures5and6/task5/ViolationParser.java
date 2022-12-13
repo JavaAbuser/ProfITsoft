@@ -56,16 +56,16 @@ public class ViolationParser {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         long start = System.currentTimeMillis();
-        for (File file : files) {
-            CompletableFuture.supplyAsync(() -> file, executorService)
-                    .thenAccept(currentFile -> {
-                        readAndMatch(currentFile);
-                        System.out.println(Thread.currentThread().getName());
-                    });
-//            System.out.println(Thread.currentThread().getName());
-//            readAndMatch(file);
-            createOutput(map);
+        for(File file : files){
+                CompletableFuture.runAsync(() -> {
+                System.out.println(Thread.currentThread().getName());
+                readAndMatch(file);
+            }, executorService);
         }
+        createOutput(map);
+
+        executorService.shutdown();
+        executorService.awaitTermination(1, TimeUnit.MINUTES);
         long end = System.currentTimeMillis();
         System.out.println(end - start);
     }

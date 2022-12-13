@@ -33,6 +33,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+
 public class ViolationParser {
     private final List<File> files = new ArrayList<>();
     private final Map<String, Double> map = new HashMap<>();
@@ -56,8 +57,6 @@ public class ViolationParser {
     }
 
     public void parse(String folderName) throws InterruptedException {
-
-
         folder = new File(folderName);
 
         findFiles();

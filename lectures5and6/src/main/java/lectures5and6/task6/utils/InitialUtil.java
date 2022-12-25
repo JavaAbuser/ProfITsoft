@@ -62,14 +62,14 @@ public class InitialUtil {
                 }
 
             }
-            if (field.getType() == int.class || field.getType() == Integer.class) {
+            if (field.getType().isAssignableFrom(int.class) || field.getType().isAssignableFrom(Integer.class)) {
                 PropertyUtils.setProperty(instance, fieldName, Integer.parseInt(property));
-            } else if (field.getType() == Instant.class) {
+            } else if (field.getType().isAssignableFrom(Instant.class)) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
                 LocalDateTime dateAndTime = LocalDateTime.parse(property, formatter);
                 Instant instant = dateAndTime.toInstant(ZoneOffset.UTC);
                 PropertyUtils.setProperty(instance, fieldName, instant);
-            } else if (field.getType() == String.class) {
+            } else if (field.getType().isAssignableFrom(String.class)) {
                 PropertyUtils.setProperty(instance, fieldName, property);
             } else {
                 throw new UnknownFieldException();

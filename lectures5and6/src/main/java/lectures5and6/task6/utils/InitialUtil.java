@@ -20,6 +20,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InitialUtil {
+    private static Properties properties;
+
     public static <T> T loadFromProperties(Class<T> cls, Path propertiesPath) throws InvalidValueException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, InvalidInstantFormatException {
         if (cls == null) {
             throw new NullPointerException();
@@ -31,13 +33,25 @@ public class InitialUtil {
                  NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
-        Properties properties = new Properties();
+        properties = readFromProperty(propertiesPath);
+
+        recognizeType(cls, instance);
+
+        return instance;
+    }
+
+    private static Properties readFromProperty(Path propertiesPath) {
+        properties = new Properties();
         InputStream is = InitialUtil.class.getClassLoader().getResourceAsStream(propertiesPath.toString());
         try {
             properties.load(is);
         } catch (Exception e) {
             throw new FileDoesNotExistException(e);
         }
+        return properties;
+    }
+
+    private static <T> void recognizeType(Class<T> cls, T instance) throws InvalidValueException, InvalidInstantFormatException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         for (Field field : cls.getDeclaredFields()) {
             field.setAccessible(true);
             String property = properties.getProperty(field.getName());
@@ -60,21 +74,19 @@ public class InitialUtil {
                     }
                     format = annotation.format();
                 }
-
             }
             if (field.getType().isAssignableFrom(int.class) || field.getType().isAssignableFrom(Integer.class)) {
                 PropertyUtils.setProperty(instance, fieldName, Integer.parseInt(property));
-            } else if (field.getType().isAssignableFrom(Instant.class)) {
+            } else if (field.getType() == Instant.class) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
                 LocalDateTime dateAndTime = LocalDateTime.parse(property, formatter);
                 Instant instant = dateAndTime.toInstant(ZoneOffset.UTC);
                 PropertyUtils.setProperty(instance, fieldName, instant);
-            } else if (field.getType().isAssignableFrom(String.class)) {
+            } else if (field.getType() == String.class) {
                 PropertyUtils.setProperty(instance, fieldName, property);
             } else {
                 throw new UnknownFieldException();
             }
         }
-        return instance;
     }
 }

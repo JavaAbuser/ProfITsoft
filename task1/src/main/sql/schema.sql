@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS market;
+
+USE market;
+
+CREATE TABLE IF NOT EXISTS category(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS product(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    description VARCHAR(100) DEFAULT 'no description',
+    category_id INT NOT NULL REFERENCES category(id)
+);

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    generate-unique-name: false
+    name: market
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3333/market
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
